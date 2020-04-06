@@ -3,7 +3,8 @@
     package="com.srivatsa.camera_integration">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.CAMERA"/>
+
+    
 
 
     <application
@@ -14,7 +15,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-
         <provider
             android:authorities="com.srivatsa.camera_integration.fileprovider"
             android:name="androidx.core.content.FileProvider"
@@ -24,9 +24,6 @@
             android:name="android.support.FILE_PROVIDER_PATHS"
         android:resource="@xml/fileprovider" />
         </provider>
-
-
-
 
         <activity android:name=".MainActivity">
             <intent-filter>

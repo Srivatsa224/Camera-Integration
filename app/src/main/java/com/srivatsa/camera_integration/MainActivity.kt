@@ -8,11 +8,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
+import android.util.Log
 import android.widget.Toast
 import androidx.core.content.FileProvider
 import kotlinx.android.synthetic.main.activity_main.*
 import java.io.File
-
+private const val TAG="MainActivity"
 private const val REQUEST_CODE=67
 lateinit var photoFile:File
 private const val FILE_NAME="photo.jpg"
@@ -25,6 +26,7 @@ class MainActivity : AppCompatActivity() {
 
         btnTakePicture.setOnClickListener {
             val takePictureIntent= Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+            Log.i(TAG,"Pic taken")
             photoFile=getPhotoFile(FILE_NAME)
 
             //starting with Android 10, this won't work/ API 24
@@ -58,6 +60,7 @@ class MainActivity : AppCompatActivity() {
         // Use 'getExternalFileDir on Context to access package-specific directories.
         val storageDir=getExternalFilesDir(Environment.DIRECTORY_PICTURES)
         return File.createTempFile(fileName,".jpg",storageDir)
+        Log.i(TAG,"storage")
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
